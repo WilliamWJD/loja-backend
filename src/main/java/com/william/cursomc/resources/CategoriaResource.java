@@ -1,8 +1,6 @@
 package com.william.cursomc.resources;
 
 import java.net.URI;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,6 +20,8 @@ import com.william.cursomc.domain.Categoria;
 import com.william.cursomc.dto.CategoriaDTO;
 import com.william.cursomc.services.CategoriaService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/categorias")
 public class CategoriaResource {
@@ -36,17 +36,17 @@ public class CategoriaResource {
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> save(@RequestBody Categoria categoria) {
-		categoria = categoriaService.save(categoria);
+	public ResponseEntity<Void> save(@Valid @RequestBody CategoriaDTO categoria) {
+		categoriaService.save(categoriaService.fromDTO(categoria));
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(categoria.getId())
 				.toUri();
 		return ResponseEntity.created(uri).build();
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Void> update(@PathVariable Integer id, @RequestBody Categoria categoria) {
+	public ResponseEntity<Void> update(@PathVariable Integer id, @Valid @RequestBody CategoriaDTO categoria) {
 		categoria.setId(id);
-		categoriaService.update(categoria);
+		categoriaService.update(categoriaService.fromDTO(categoria));
 		return ResponseEntity.noContent().build();
 	}
 
