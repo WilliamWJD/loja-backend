@@ -17,4 +17,9 @@ public class CategoriaService {
 		return categoriaRepository.findById(id)
 				.orElseThrow(() -> new ObjectNotFoundException("Categoria não encontrada com o id: " + id));
 	}
+	
+	public Categoria salvar(Categoria categoria) {
+		categoria.setId(null);
+		return categoriaRepository.save(categoria);
+	}
 }
