@@ -2,17 +2,49 @@ package com.william.cursomc.resources.exceptions;
 
 import java.io.Serializable;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.ToString;
-
-@Data
-@ToString
-@AllArgsConstructor
 public class StandardError implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer status;
 	private String msg;
 	private Long timestamp;
+	
+	public StandardError() {
+	}
+
+	public StandardError(Integer status, String msg, Long timestamp) {
+		super();
+		this.status = status;
+		this.msg = msg;
+		this.timestamp = timestamp;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+	public Long getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(Long timestamp) {
+		this.timestamp = timestamp;
+	}
+
+	@Override
+	public String toString() {
+		return "StandardError [status=" + status + ", msg=" + msg + ", timestamp=" + timestamp + "]";
+	}
 }

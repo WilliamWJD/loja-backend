@@ -6,17 +6,16 @@ import java.util.Date;
 import com.william.cursomc.domain.enums.EstadoPagamento;
 
 import jakarta.persistence.Entity;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity
-@NoArgsConstructor
-@ToString
 public class PagamentoComBoleto extends Pagamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Date dataVencimento;
 	private Date dataPagamento;
+	
+	public PagamentoComBoleto() {
+	}
 	
 	public PagamentoComBoleto(Integer id, EstadoPagamento estado, Pedido pedido, Date dataVencimento, Date dataPagamento) {
 		super(id, estado, pedido);
@@ -38,5 +37,10 @@ public class PagamentoComBoleto extends Pagamento implements Serializable {
 
 	public void setDataPagamento(Date dataPagamento) {
 		this.dataPagamento = dataPagamento;
+	}
+
+	@Override
+	public String toString() {
+		return "PagamentoComBoleto [dataVencimento=" + dataVencimento + ", dataPagamento=" + dataPagamento + "]";
 	}
 }

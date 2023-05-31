@@ -1,11 +1,7 @@
 package com.william.cursomc.domain.enums;
 
-import lombok.Getter;
-
-@Getter
 public enum TipoCliente {
-	PESSOAFISICA(1, "Pessoa Física"), 
-	PESSOAJURIDICA(2, "Pessoa Jurídica");
+	PESSOAFISICA(1, "Pessoa Física"), PESSOAJURIDICA(2, "Pessoa Jurídica");
 
 	private int cod;
 	private String descricao;
@@ -13,6 +9,14 @@ public enum TipoCliente {
 	private TipoCliente(int cod, String descricao) {
 		this.cod = cod;
 		this.descricao = descricao;
+	}
+
+	public int getCod() {
+		return cod;
+	}
+
+	public String getDescricao() {
+		return descricao;
 	}
 
 	public static TipoCliente toEnum(Integer cod) {

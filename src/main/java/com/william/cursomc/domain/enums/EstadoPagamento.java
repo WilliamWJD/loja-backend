@@ -1,8 +1,5 @@
 package com.william.cursomc.domain.enums;
 
-import lombok.Getter;
-
-@Getter
 public enum EstadoPagamento {
 	PENDENTE(1, "Pendente"), 
 	QUITADO(2, "Quitado"),
@@ -14,6 +11,14 @@ public enum EstadoPagamento {
 	private EstadoPagamento(int cod, String descricao) {
 		this.cod = cod;
 		this.descricao = descricao;
+	}
+	
+	public int getCod() {
+		return cod;
+	}
+
+	public String getDescricao() {
+		return descricao;
 	}
 
 	public static EstadoPagamento toEnum(Integer cod) {
@@ -29,4 +34,6 @@ public enum EstadoPagamento {
 
 		throw new IllegalArgumentException("id inválido: " + cod);
 	}
+	
+	
 }
