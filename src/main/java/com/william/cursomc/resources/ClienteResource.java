@@ -2,6 +2,8 @@ package com.william.cursomc.resources;
 
 import java.net.URI;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +22,6 @@ import com.william.cursomc.domain.Cliente;
 import com.william.cursomc.dto.ClienteDTO;
 import com.william.cursomc.dto.ClienteNewDTO;
 import com.william.cursomc.services.ClienteService;
-
-import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/clientes")

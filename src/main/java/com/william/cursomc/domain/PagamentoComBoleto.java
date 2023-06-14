@@ -3,10 +3,10 @@ package com.william.cursomc.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.william.cursomc.domain.enums.EstadoPagamento;
-
-import jakarta.persistence.Entity;
 
 @Entity
 @JsonTypeName("pagamentoComBoleto")
@@ -15,11 +15,12 @@ public class PagamentoComBoleto extends Pagamento implements Serializable {
 
 	private Date dataVencimento;
 	private Date dataPagamento;
-	
+
 	public PagamentoComBoleto() {
 	}
-	
-	public PagamentoComBoleto(Integer id, EstadoPagamento estado, Pedido pedido, Date dataVencimento, Date dataPagamento) {
+
+	public PagamentoComBoleto(Integer id, EstadoPagamento estado, Pedido pedido, Date dataVencimento,
+			Date dataPagamento) {
 		super(id, estado, pedido);
 		this.dataPagamento = dataPagamento;
 		this.dataVencimento = dataVencimento;

@@ -2,10 +2,10 @@ package com.william.cursomc.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.william.cursomc.domain.enums.EstadoPagamento;
-
-import jakarta.persistence.Entity;
 
 @Entity
 @JsonTypeName("pagamentoComCartao")

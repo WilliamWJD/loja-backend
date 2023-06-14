@@ -3,6 +3,9 @@ package com.william.cursomc.services.validations;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.william.cursomc.domain.Cliente;
@@ -11,9 +14,6 @@ import com.william.cursomc.dto.ClienteNewDTO;
 import com.william.cursomc.repositories.ClienteRepository;
 import com.william.cursomc.resources.exceptions.FieldMessage;
 import com.william.cursomc.services.validations.utils.BR;
-
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
 
 public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert, ClienteNewDTO> {
 	

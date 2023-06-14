@@ -2,6 +2,8 @@ package com.william.cursomc.resources;
 
 import java.net.URI;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +22,6 @@ import com.william.cursomc.domain.Categoria;
 import com.william.cursomc.dto.CategoriaDTO;
 import com.william.cursomc.services.CategoriaService;
 
-import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/categorias")
