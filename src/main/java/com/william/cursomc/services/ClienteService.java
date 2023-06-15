@@ -14,11 +14,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.william.cursomc.domain.Cidade;
 import com.william.cursomc.domain.Cliente;
 import com.william.cursomc.domain.Endereco;
+import com.william.cursomc.domain.enums.Perfil;
 import com.william.cursomc.domain.enums.TipoCliente;
 import com.william.cursomc.dto.ClienteDTO;
 import com.william.cursomc.dto.ClienteNewDTO;
 import com.william.cursomc.repositories.ClienteRepository;
 import com.william.cursomc.repositories.EnderecoRepository;
+import com.william.cursomc.security.UserSS;
+import com.william.cursomc.services.exceptions.AuthorizationException;
 import com.william.cursomc.services.exceptions.DataIntegrityException;
 import com.william.cursomc.services.exceptions.ObjectNotFoundException;
 
@@ -43,6 +46,12 @@ public class ClienteService {
 	}
 
 	public Cliente find(Integer id) {
+		UserSS user = UserService.authenticated();
+		
+		if(user == null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())) {
+			throw new AuthorizationException("Acesso negado");
+		}
+		
 		return clienteRepository.findById(id)
 				.orElseThrow(() -> new ObjectNotFoundException("Cliente não encontrado com o id: " + id));
 	}
